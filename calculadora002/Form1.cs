@@ -1,4 +1,4 @@
-﻿//001 ddd sss eee
+﻿//001 ddd sss
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
