@@ -1,4 +1,4 @@
-
+// modificación en VS, después de otra en GitHub sin haberle hecho "pull"
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
