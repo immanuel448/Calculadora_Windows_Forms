@@ -170,12 +170,6 @@ namespace calculadora002
             }
         }
 
-        private double RedondearDouble(double miDouble, int numDecimales)
-        {
-            //hay que redondear
-            return Math.Round(miDouble, numDecimales);
-        }
-
         private double ConvertirADouble(string dato)
         {
             double doubleTemporal = 0.0;
