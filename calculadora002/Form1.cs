@@ -60,36 +60,35 @@ namespace calculadora002
             btnretroceder.Enabled = true;
         }
 
-        private bool EvaluarDoubleDentroRango(string valor = "0", double miDouble = 0)
+        private void SiHayErrorReiniciaVariables()
         {
-            SiHayErrorReiniciaVariables();
-
-            if (double.TryParse(valor, out double numeroDouble))
+            if (_mostrarError == true)
             {
-                if (miDouble != 0)
-                {
-                    //se ingresó un double
-                    numeroDouble = miDouble;
-                }
-
-                //sí es un double
-                if (_objParteLogica.EvaluarRangoNumero(numeroDouble))
-                {
-                    //dentro de rango
-                    return true;
-                }
-                else
-                {
-                    LlamarError("FueraRang2");
-                    return false;
-                }
-            }
-            else
-            {
-                LlamarError("No Num.");
-                return false;
+                //muestra cero en pantalla
+                ReiniciarVariables();
             }
         }
+
+        private void LlamarError(string mensaje)
+        {
+            ReiniciarVariables();//eeee revisar esto
+
+            btnSumar.Enabled = false;
+            btnRestar.Enabled = false;
+            btnMultiplicar.Enabled = false;
+            btnDividir.Enabled = false;
+            btnIgual.Enabled = false;
+            btnMasMenos.Enabled = false;
+
+            _mostrarError = true;
+            MostrarEnPantalla(mensaje);
+        }
+
+        private void MostrarEnPantalla(string valor)
+        {
+            txtBox001.Text = valor;
+        }
+
 
         //gestiona numeros y errores
         private void FormatearParaPantalla(string valor)
@@ -139,25 +138,36 @@ namespace calculadora002
                 }
             }
         }
-        
-        private void LlamarError(string mensaje)
+
+        private bool EvaluarDoubleDentroRango(string valor = "0", double miDouble = 0)
         {
-            ReiniciarVariables();//eeee revisar esto
+            SiHayErrorReiniciaVariables();
 
-            btnSumar.Enabled = false;
-            btnRestar.Enabled = false;
-            btnMultiplicar.Enabled = false;
-            btnDividir.Enabled = false;
-            btnIgual.Enabled = false;
-            btnMasMenos.Enabled = false;
+            if (double.TryParse(valor, out double numeroDouble))
+            {
+                if (miDouble != 0)
+                {
+                    //se ingresó un double
+                    numeroDouble = miDouble;
+                }
 
-            _mostrarError = true;
-            MostrarEnPantalla(mensaje);
-        }
-
-        private void MostrarEnPantalla(string valor)
-        {
-            txtBox001.Text = valor;
+                //sí es un double
+                if (_objParteLogica.EvaluarRangoNumero(numeroDouble))
+                {
+                    //dentro de rango
+                    return true;
+                }
+                else
+                {
+                    LlamarError("FueraRang2");
+                    return false;
+                }
+            }
+            else
+            {
+                LlamarError("No Num.");
+                return false;
+            }
         }
 
         private double RedondearDouble(double miDouble, int numDecimales)
@@ -187,15 +197,6 @@ namespace calculadora002
             {
                 LlamarError("No. Num1");
                 return 0;
-            }
-        }
-
-        private void SiHayErrorReiniciaVariables()
-        {
-            if (_mostrarError == true)
-            {
-                //muestra cero en pantalla
-                ReiniciarVariables();
             }
         }
 
