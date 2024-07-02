@@ -1,3 +1,3 @@
-# Calculadora en Windows Forms
+# Calculadora con Windows Forms
 
 ### (En proceso...)
