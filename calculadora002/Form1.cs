@@ -26,15 +26,13 @@ namespace calculadora002
         private bool _repetirIgual { get; set; }
         private ParteLogica _objParteLogica { get; set; }
 
-
-
         public form001()
         {
             InitializeComponent();
             ReiniciarVariables();
         }
 
-        //métodos ------------------------------------------
+        //métodos------------------------------------------
         private void ReiniciarVariables()
         {
             //variables
@@ -71,7 +69,7 @@ namespace calculadora002
 
         private void LlamarError(string mensaje)
         {
-            ReiniciarVariables();//eeee revisar esto
+            ReiniciarVariables();
 
             btnSumar.Enabled = false;
             btnRestar.Enabled = false;
@@ -151,7 +149,7 @@ namespace calculadora002
                     numeroDouble = miDouble;
                 }
 
-                //sí es un double
+                // sí es un double
                 if (_objParteLogica.EvaluarRangoNumero(numeroDouble))
                 {
                     //dentro de rango
@@ -334,7 +332,6 @@ namespace calculadora002
         }
 
 
-
         //forma el número, gestiona ceros, punto, signo, dimensión
         private void FormarNumero(string datoIngresado)
         {
@@ -371,12 +368,8 @@ namespace calculadora002
                     _btnOperacionActivado = false;
                     _segundoNumero = double.NaN;
                 }
-
                 _btnIgualActivado = false;//eeee
             }//igual presionado
-
-
-
 
 
             //operación presionado inmediatamente antes
