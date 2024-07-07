@@ -49,13 +49,18 @@ namespace calculadora002
             _objParteLogica = new ParteLogica();
 
             //botones
-            btnSumar.Enabled = true;
-            btnRestar.Enabled = true;
-            btnMultiplicar.Enabled = true;
-            btnDividir.Enabled = true;
-            btnIgual.Enabled = true;
-            btnMasMenos.Enabled = true;
+            ActivarBotones(true);
             btnretroceder.Enabled = true;
+        }
+
+        private void LlamarError(string mensaje)
+        {
+            ReiniciarVariables();
+
+            ActivarBotones(false);
+
+            _mostrarError = true;
+            MostrarEnPantalla(mensaje);
         }
 
         private void SiHayErrorReiniciaVariables()
@@ -67,19 +72,15 @@ namespace calculadora002
             }
         }
 
-        private void LlamarError(string mensaje)
+
+        private void ActivarBotones(bool activar)
         {
-            ReiniciarVariables();
-
-            btnSumar.Enabled = false;
-            btnRestar.Enabled = false;
-            btnMultiplicar.Enabled = false;
-            btnDividir.Enabled = false;
-            btnIgual.Enabled = false;
-            btnMasMenos.Enabled = false;
-
-            _mostrarError = true;
-            MostrarEnPantalla(mensaje);
+            btnSumar.Enabled = activar;
+            btnRestar.Enabled = activar;
+            btnMultiplicar.Enabled = activar;
+            btnDividir.Enabled = activar;
+            btnIgual.Enabled = activar;
+            btnMasMenos.Enabled = activar;
         }
 
         private void MostrarEnPantalla(string valor)
